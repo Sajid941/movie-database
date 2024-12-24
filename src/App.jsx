@@ -1,9 +1,15 @@
-import "./App.css";
+import HeroSection from "./components/HeroSection";
+import Navbar from "./components/Navbar";
 
 function App() {
     return (
         <>
-            <h1 className="text-7xl font-bold text-center h-screen my-auto">MOV_Guide</h1>
+            <main className="max-w-[1920px] mx-auto">
+                <header className="relative">
+                    <Navbar />
+                </header>
+                <HeroSection/>
+            </main>
         </>
     );
 }
