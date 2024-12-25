@@ -18,9 +18,9 @@ const HeroSection = () => {
                     Your personalized movie guide is here. Explore, discover,
                     and fall in love with your next favorite film.
                 </p>
-                <button className="bg-white hover:bg-gray-200 rounded-md px-10 py-1 font-semibold">
+                <a href="#movieList" className="bg-white hover:bg-gray-200 rounded-md px-10 py-1 font-semibold">
                     Get Start
-                </button>
+                </a>
             </div>
         </div>
     );

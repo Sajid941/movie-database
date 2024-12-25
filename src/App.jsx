@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 function App() {
     return (
         <>
-            <main className="max-w-[1920px] mx-auto">
+            <main className="max-w-[1920px] mx-auto scroll-smooth">
                 <header className="relative">
                     <Navbar />
                 </header>

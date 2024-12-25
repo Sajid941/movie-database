@@ -10,7 +10,7 @@ const Movies = () => {
             .then((response) => response.json())
             .then((data) => setMovies(data));
     }, []);
-    
+
     const [currentPage, setCurrentPage] = useState(0);
     const [moviesPerPage, setMoviesPerPage] = useState(10);
     const indexOfTableFirstMovie = currentPage * moviesPerPage;
@@ -22,7 +22,7 @@ const Movies = () => {
     );
 
     return (
-        <section className="my-20 flex flex-col items-center px-5">
+        <section id="movieList" className="my-20 flex flex-col items-center px-5 scroll-m-5">
             <div className="text-white text-center space-y-1 border-b-2 pb-2 px-5">
                 <h1 className="text-2xl md:text-3xl font-bold">
                     Timeless Movie Collection
