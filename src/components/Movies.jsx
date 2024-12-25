@@ -10,17 +10,12 @@ const Movies = () => {
             .then((response) => response.json())
             .then((data) => setMovies(data));
     }, []);
+    
     const [currentPage, setCurrentPage] = useState(0);
     const [moviesPerPage, setMoviesPerPage] = useState(10);
     const indexOfTableFirstMovie = currentPage * moviesPerPage;
     const indexOfTableLastMovie = indexOfTableFirstMovie + moviesPerPage;
 
-    console.log(
-        moviesPerPage,
-        indexOfTableLastMovie,
-        currentPage,
-        indexOfTableFirstMovie
-    );
     const currentMovies = movies.slice(
         indexOfTableFirstMovie,
         indexOfTableLastMovie
