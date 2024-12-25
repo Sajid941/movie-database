@@ -10,21 +10,34 @@ const Movies = () => {
             .then((response) => response.json())
             .then((data) => setMovies(data));
     }, []);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [moviesPerPage, setMoviesPerPage] = useState(10);
+    const indexOfTableFirstMovie = currentPage * moviesPerPage;
+    const indexOfTableLastMovie = indexOfTableFirstMovie + moviesPerPage;
 
-    const currentMovies = movies.slice(0, 10);
+    console.log(
+        moviesPerPage,
+        indexOfTableLastMovie,
+        currentPage,
+        indexOfTableFirstMovie
+    );
+    const currentMovies = movies.slice(
+        indexOfTableFirstMovie,
+        indexOfTableLastMovie
+    );
 
     return (
-        <section className="my-20 flex flex-col items-center">
+        <section className="my-20 flex flex-col items-center px-5">
             <div className="text-white text-center space-y-1 border-b-2 pb-2 px-5">
-                <h1 className="text-3xl font-bold">
+                <h1 className="text-2xl md:text-3xl font-bold">
                     Timeless Movie Collection
                 </h1>
-                <p className="text-[#737373] font-semibold w-96 ">
+                <p className="text-[#737373] font-semibold w-auto md:w-96 ">
                     Browse a curated collection of iconic movies and discover
                     timeless cinematic gems.
                 </p>
             </div>
-            <div className="overflow-x-auto mt-10">
+            <div className="overflow-x-auto mt-10 w-auto  md:w-[640px]">
                 <table className="table-auto w-full border-collapse border border-gray-600">
                     <thead>
                         <tr>
@@ -49,7 +62,7 @@ const Movies = () => {
                                 className="bg-[#0a181a] hover:bg-[#122426]"
                             >
                                 <td className="border border-gray-600 px-4 py-2 text-gray-300">
-                                    {index + 1}
+                                    {indexOfTableFirstMovie + index + 1}
                                 </td>
                                 <td className="border border-gray-600 px-4 py-2 text-gray-300">
                                     {movie.movie}
@@ -74,14 +87,32 @@ const Movies = () => {
                 {/* Pagination */}
                 <div className="flex justify-between mt-5 px-2">
                     <div>
-                        <div className="border-2 border-gray-600 text-gray-300 p-2 rounded-md">
+                        <button
+                            disabled={indexOfTableFirstMovie === 0}
+                            onClick={() => setCurrentPage(currentPage - 1)}
+                            className="border-2 border-gray-600 text-gray-300 p-2 rounded-md cursor-pointer"
+                        >
                             <FaArrowLeft />
-                        </div>
+                        </button>
                     </div>
-                    <div>
-                        <div className="border-2 border-gray-600 text-gray-300 p-2 rounded-md">
+                    <div className="flex items-center gap-3">
+                        <select
+                            onChange={(e) =>
+                                setMoviesPerPage(parseInt(e.target.value))
+                            }
+                            className="bg-transparent text-white border-2 border-gray-600 p-1 rounded-md"
+                        >
+                            <option className="bg-[#0a181a]" value="20">20</option>
+                            <option className="bg-[#0a181a]" value="10">10</option>
+                            <option className="bg-[#0a181a]" value="50">50</option>
+                        </select>
+                        <button
+                            disabled={indexOfTableLastMovie === movies.length}
+                            onClick={() => setCurrentPage(currentPage + 1)}
+                            className="border-2 border-gray-600 text-gray-300 p-2 rounded-md cursor-pointer"
+                        >
                             <FaArrowRight />
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>
