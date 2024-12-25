@@ -1,4 +1,5 @@
 import HeroSection from "./components/HeroSection";
+import Movies from "./components/Movies";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
                     <Navbar />
                 </header>
                 <HeroSection/>
+                <Movies/>
             </main>
         </>
     );
