@@ -102,9 +102,15 @@ const Movies = () => {
                             }
                             className="bg-transparent text-white border-2 border-gray-600 p-1 rounded-md"
                         >
-                            <option className="bg-[#0a181a]" value="20">20</option>
-                            <option className="bg-[#0a181a]" value="10">10</option>
-                            <option className="bg-[#0a181a]" value="50">50</option>
+                            <option className="bg-[#0a181a]" value="10">
+                                10
+                            </option>
+                            <option className="bg-[#0a181a]" value="20">
+                                20
+                            </option>
+                            <option className="bg-[#0a181a]" value="50">
+                                50
+                            </option>
                         </select>
                         <button
                             disabled={indexOfTableLastMovie === movies.length}
